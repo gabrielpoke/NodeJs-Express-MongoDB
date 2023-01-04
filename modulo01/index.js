@@ -20,4 +20,6 @@ server.get('/cursos', (req, res) => {
 
   return res.json({ nome: `Nome do curso ${nome}` })
 })
+
+//localhost:3000
 server.listen(3000)

@@ -6,6 +6,15 @@ code . -  Comando que abre no visual studio o diretorio via cmd
 
 yarn add express - Comando para add a dependencia Express ao nosso projeto 
 
+yarn add nodemon -D - Pacote de Live Reload para não precsiar mais restarta o servidor após as alterações ( nodemon index.js para roda via cmd)
+
+Para criar um script para rodar o nodemon de uma maneira mais simples:
+
+1° passo: abrir o arquivo package.json - 2° passo: abaixo do campo license cria um node de "scripts":{ "dev": "nodemon index.js"}
+
+Para rodar agora podemos apenas digitar yarn dev que o nodemon vai ser executado.
+
+
 Query params - parametros que passamos na frente da roda, Exemplos: 
 
 server.get('/cursos', (req, res) => {}) (Criar uma função de acesso referenciada a esta url)
@@ -30,5 +39,6 @@ outra maniera do comando de cima - const { id } = req.params
 http://localhost:3000/cursos/1 ( Url no navegador passando os parametros )
 
 e por fim da um o valor de retorno - return res.json({id: `Id do curso ${id}`})
+
 
 Request Body - requisição de obejto contendo informações
