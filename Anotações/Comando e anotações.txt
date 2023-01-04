@@ -14,6 +14,8 @@ Para criar um script para rodar o nodemon de uma maneira mais simples:
 
 Para rodar agora podemos apenas digitar yarn dev que o nodemon vai ser executado.
 
+server.use(express.json()) (Comando indicando que estamos recebendo e trabalhando com obejtos JSON.)
+
 
 Query params - parametros que passamos na frente da roda, Exemplos: 
 
@@ -42,3 +44,7 @@ e por fim da um o valor de retorno - return res.json({id: `Id do curso ${id}`})
 
 
 Request Body - requisição de obejto contendo informações
+
+const nome = req.body.nome const id ( Cria uma constante e resgata valor da variavel, OBS: use params para este caso)
+
+outra maniera do comando de cima - const { nome } = req.body
