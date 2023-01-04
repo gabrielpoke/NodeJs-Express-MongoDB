@@ -7,15 +7,17 @@ const server = express()
 
 //Request Body - requisição de obejto contendo informações
 
-server.get('/cursos/:id', (req, res) => {
-  const id = req.params.id
+const cursos = ['NodeJs', 'JavaScript', 'React Native']
 
-  const nome = req.query.nome
+server.get('/cursos/:index', (req, res) => {
+  const { index } = req.params
 
-  return res.json({
-    cursos: `Nome do curso ${nome}`,
-    id: `Id do curso ${id}`
-  })
+  return res.json(cursos[index])
 })
 
+server.get('/cursos', (req, res) => {
+  const { nome } = req.query
+
+  return res.json({ nome: `Nome do curso ${nome}` })
+})
 server.listen(3000)
