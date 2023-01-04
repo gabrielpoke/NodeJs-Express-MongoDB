@@ -13,20 +13,46 @@ server.use(express.json())
 
 const cursos = ['NodeJs', 'JavaScript', 'React Native']
 
+//Middleware Global
+server.use((req, res, next) => {
+  console.log(`Url : ${req.url}`)
+
+  return next()
+})
+
+//Middleware parte de codigo que fica entre a resposta e requisição
+function checkCurso(req, res, next) {
+  if (!req.body.nome) {
+    return res.status(400).json({ error: 'Nome do curso não informado' })
+  }
+
+  return next()
+}
+
+//Middleware
+function checkIndexCurso(req, res, next) {
+  const curso = cursos[req.params.index]
+
+  if (!curso) {
+    return res.status(400).json({ error: 'Curso não achado' })
+  }
+
+  req.curso = curso
+  return next()
+}
+
 //Pega todos os cursos do Array
 server.get('/cursos', (req, res) => {
   return res.json(cursos)
 })
 
 //Pega curso referenciando o index
-server.get('/cursos/:index', (req, res) => {
-  const { index } = req.params
-
-  return res.json(cursos[index])
+server.get('/cursos/:index', checkIndexCurso, (req, res) => {
+  return res.json(req.curso)
 })
 
 //Salvando um novo curso
-server.post('/cursos', (req, res) => {
+server.post('/cursos', checkCurso, (req, res) => {
   const { nome } = req.body
 
   cursos.push(nome)
@@ -35,7 +61,7 @@ server.post('/cursos', (req, res) => {
 })
 
 //Atualizando cursos
-server.put('/cursos/:index', (req, res) => {
+server.put('/cursos/:index', checkCurso, checkIndexCurso, (req, res) => {
   const { index } = req.params
 
   const { nome } = req.body
@@ -46,7 +72,7 @@ server.put('/cursos/:index', (req, res) => {
 })
 
 //Deletando cursos
-server.delete('/cursos/:index', (req, res) => {
+server.delete('/cursos/:index', checkIndexCurso, (req, res) => {
   const { index } = req.params
 
   cursos.splice(index, 1)

@@ -16,6 +16,10 @@ Para rodar agora podemos apenas digitar yarn dev que o nodemon vai ser executado
 
 server.use(express.json()) (Comando indicando que estamos recebendo e trabalhando com obejtos JSON.)
 
+next ( Comando que server para indicar que após executar ele passe para o próximo bloco de execução)
+
+Middleware parte de codigo que fica entre a resposta e requisição
+
 
 Query params - parametros que passamos na frente da roda, Exemplos: 
 
