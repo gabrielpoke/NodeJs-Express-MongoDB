@@ -1,3 +1,30 @@
 Modulo 01
 
 yarn init -y - Comando para criar o arquivo Packge
+
+code . -  Comando que abre no visual studio o diretorio via cmd 
+
+yarn add express - Comando para add a dependencia Express ao nosso projeto 
+
+Query params - parametros que passamos na frente da roda, Exemplos: 
+
+server.get('/cursos', (req, res) => {}) (Criar uma função de acesso referenciada a esta url)
+
+const nome = req.query.nome ( Cria uma constante e resgata valor da variavel, OBS: use query para este caso)
+
+http://localhost:3000/cursos?nome=osvaldo ( Url no navegador passando os parametros )
+
+e por fim da um o valor de retorno - return res.json({ cursos: `Nome do curso ${nome}`})
+
+
+Route params - paramentos de acesso enviado via rota
+
+server.get('/cursos/:id', (req, res) => {}) (Criar uma função de acesso referenciada a esta url, passando o id como parametro)
+
+const id = req.params.id ( Cria uma constante e resgata valor da variavel, OBS: use params para este caso)
+
+http://localhost:3000/cursos/1 ( Url no navegador passando os parametros )
+
+e por fim da um o valor de retorno - return res.json({id: `Id do curso ${id}`})
+
+Request Body - requisição de obejto contendo informações
