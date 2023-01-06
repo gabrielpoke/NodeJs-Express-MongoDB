@@ -1,6 +1,8 @@
 //yarn add express -D
 import express from 'express'
 
+import path from 'path'
+
 //yarn add mongoose -D
 import mongoose from 'mongoose'
 
@@ -26,6 +28,10 @@ class App {
   }
 
   middlewares() {
+    this.server.use(
+      '/files',
+      express.static(path.resolve(__dirname, '..', 'uploads'))
+    )
     this.server.use(express.json())
   }
 
